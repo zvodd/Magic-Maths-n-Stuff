@@ -1,42 +1,47 @@
-var LineXSlider;
-var LineGradientSlider;
 function setup() {
   createCanvas(720, 480);
   
+  // Line1 object holds 2 vectors; origin and destination.
+  var L = {vo:null, vd:null};
   
-  LineXSlider = createSlider(0, 200);
-  LineXSlider.position(width - 200, 20);
-  
-  LineGradientSlider = createSlider(0, 100);
-  LineGradientSlider.position(width - 200, 50);
-  
+  lxo_slider = createSlider(0, width, 100);
+  lxo_slider.position(width - 200, 20);
+  lyo_slider = createSlider(0, height, 100);
+  lyo_slider.position(width - 200, 40);
+  lxd_slider = createSlider(0, width, 200);
+  lxd_slider.position(width - 200, 60);
+  lyd_slider = createSlider(0, height, 200);
+  lyd_slider.position(width - 200, 80);
 }
 
 function draw() {
   background('white');
   createGrid(width, height);
+
+  // Get origin and destination values from sliders.
+  L1.vo = createVector(lxo_slider.value(), lyo_slider.value());
+  L1.vd = createVector(lxd_slider.value(), lyd_slider.value());
+  
+  // Color and draw the line
   stroke("lightblue");
   strokeWeight(4);
-  var l = {m: LineGradientSlider.value()/100, b:LineXSlider.value()};
-  translate(100,0);
-  drawLine(l,300)
+  drawLine(L1);
+  strokeWeight(0);
+  
+  // Set up text color
+  fill("blue");
+  
+  // Find the vector of the line.
+  var realVector = findVector(L1);
+  text(realVector.x + ', ' + findVector(L1).y, width/2, 20);
+  
 }
 
-function findY(l, x)
-{
-  var y =  l.m *x+l.b;
-  return y;
+function findVector(L){
+  return createVector(L.vd.x - L.vo.x, L.vd.y - L.vo.y);
 }
 
-function drawLine(l, x)
+function drawLine(L)
 {
-  var y = findY(l, x),
-      ox = x,
-      oy = y;
-
-  x = 0;
-  y = findY(l, x);
-  
-  line(ox,oy,x,y);
-  
+  line(L.vo.x, L.vo.y, L.vd.x, L.vd.y);
 }
