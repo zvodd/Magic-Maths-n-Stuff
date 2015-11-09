@@ -1,8 +1,9 @@
+var L1;
 function setup() {
   createCanvas(720, 480);
   
   // Line1 object holds 2 vectors; origin and destination.
-  var L = {vo:null, vd:null};
+  L1 = {posA:null, posB:null};
   
   lxo_slider = createSlider(0, width, 100);
   lxo_slider.position(width - 200, 20);
@@ -18,9 +19,9 @@ function draw() {
   background('white');
   createGrid(width, height);
 
-  // Get origin and destination values from sliders.
-  L1.vo = createVector(lxo_slider.value(), lyo_slider.value());
-  L1.vd = createVector(lxd_slider.value(), lyd_slider.value());
+  // Get origin and destination position from sliders.
+  L1.posA = createVector(lxo_slider.value(), lyo_slider.value());
+  L1.posB = createVector(lxd_slider.value(), lyd_slider.value());
   
   // Color and draw the line
   stroke("lightblue");
@@ -38,10 +39,10 @@ function draw() {
 }
 
 function findVector(L){
-  return createVector(L.vd.x - L.vo.x, L.vd.y - L.vo.y);
+  return createVector(L.posB.x - L.posA.x, L.posB.y - L.posA.y);
 }
 
 function drawLine(L)
 {
-  line(L.vo.x, L.vo.y, L.vd.x, L.vd.y);
+  line(L.posA.x, L.posA.y, L.posB.x, L.posB.y);
 }
