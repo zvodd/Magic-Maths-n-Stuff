@@ -9,3 +9,5 @@ A series of small p5.js demo exploreing vector mathematics and proceedural drawi
    - Line equation and relationship with gradiant
  - 1grided_line_eq1
    - Interactive line, prints the vector of the line. 
+ - 2grided_2lines
+   - 2 interactive lines, rendering their normalised vectors and dot product.
