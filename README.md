@@ -2,6 +2,11 @@
 
 A series of small p5.js demo exploreing vector mathematics and proceedural drawing.
 
+### How to Run
+Download the Repoistory as a zip or tar archive and extract.
+Each folder contains an `index.html` that can be opened in web browser to run the demo.
+
+
 ### Contents
  - 1grid_draw
    - Procedurally draw a grid.
