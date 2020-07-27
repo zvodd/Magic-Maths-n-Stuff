@@ -16,3 +16,6 @@ Each folder contains an `index.html` that can be opened in web browser to run th
    - Interactive line, prints the vector of the line. 
  - 2grided_2lines
    - 2 interactive lines, rendering their normalised vectors and dot product.
+ - 3draw_a_circle
+   - Projects N lines from origin to N points around a radius. Looks like a "sunburst" effect, or something that resembles a cone. 
+   - Without the rendering lines the end positions of the lines would be an N precision approximatation a circle.
